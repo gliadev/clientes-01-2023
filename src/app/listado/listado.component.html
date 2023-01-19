@@ -1,0 +1,37 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Teléfono</th>
+      <th>E-mail</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of clientes">
+      <th>{{ c.id }}</th>
+      <td>{{ c.nombre }}</td>
+      <td>{{ c.apellidos }}</td>
+      <td>{{ c.telefono }}</td>
+      <td>{{ c.email }}</td>
+      <td>
+        <a routerLink="/formulario/{{ c.id }}">Editar</a>
+        <a routerLink="/listado" (click)="borrar(c.id)">Borrar</a>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <a routerLink="/formulario">Añadir</a>
+      </td>
+    </tr>
+  </tfoot>
+</table>
