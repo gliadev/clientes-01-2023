@@ -1,5 +1,11 @@
 # Clientes
 
+<<<<<<< HEAD
+=======
+Correction y modificacion del ejercicio formulario de clientes,
+permite editar borrar y añadir elementos al listado, sin css
+
+>>>>>>> d93ea998925a3c86bfa423ad12658f2d972aba72
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
 
 ## Development server
