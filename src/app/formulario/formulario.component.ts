@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from '../cliente';
-import { CLIENTES } from '../mock-clientes';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-formulario',
@@ -12,24 +12,24 @@ import { CLIENTES } from '../mock-clientes';
 export class FormularioComponent implements OnInit {
   cliente: Cliente = { id: 0, nombre: '', apellidos: '', telefono: '', email: '' };
 
-  constructor(private route: ActivatedRoute, private location: Location) { }
+  constructor(private clienteService: ClienteService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
 
     const id: string | null = this.route.snapshot.paramMap.get('id');
 
     if (id) {
-      this.cliente = CLIENTES.find(c => c.id === +id)!;
+      this.clienteService.obtenerPorId(+id).subscribe(
+        cliente => this.cliente = cliente!
+      );
     }
   }
 
   guardar() {
     if (this.cliente.id) {
-      const i = CLIENTES.findIndex(c => c.id === this.cliente.id);
-      CLIENTES[i] = this.cliente;
+      this.clienteService.modificar(this.cliente).subscribe();
     } else {
-      CLIENTES.push(this.cliente);
-      this.cliente.id = (Math.max(...CLIENTES.map(c => c.id))) + 1;
+      this.clienteService.insertar(this.cliente).subscribe();
     }
     
     this.location.back();

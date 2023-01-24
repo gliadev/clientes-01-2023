@@ -1,8 +1,5 @@
 # Clientes
 
-Correction y modificacion del ejercicio formulario de clientes,
-permite editar borrar y añadir elementos al listado
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
 
 ## Development server
